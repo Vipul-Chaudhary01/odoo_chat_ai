@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mattermost_ai_user_mapping_user,mattermost.ai.user.mapping user,model_mattermost_ai_user_mapping,group_pys_mattermost_odoo_ai_user,1,0,0,0
+access_mattermost_ai_user_mapping_admin,mattermost.ai.user.mapping admin,model_mattermost_ai_user_mapping,group_pys_mattermost_odoo_ai_admin,1,1,1,1
+access_mattermost_ai_request_user,mattermost.ai.request user,model_mattermost_ai_request,group_pys_mattermost_odoo_ai_user,1,0,0,0
+access_mattermost_ai_request_admin,mattermost.ai.request admin,model_mattermost_ai_request,group_pys_mattermost_odoo_ai_admin,1,1,1,0
+access_mattermost_ai_document_wizard_admin,mattermost.ai.document.wizard admin,model_mattermost_ai_document_wizard,group_pys_mattermost_odoo_ai_admin,1,1,1,1

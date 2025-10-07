@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_pys_mattermost_ai" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.pys_mattermost_odoo_ai</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Mattermost AI" name="pys_mattermost_odoo_ai" groups="pys_mattermost_odoo_ai.group_pys_mattermost_odoo_ai_admin">
+                    <block title="Integration">
+                        <setting string="Enable Mattermost → Odoo AI">
+                            <field name="mm_ai_enabled"/>
+                        </setting>
+                        <setting string="Public Odoo URL"
+                                 help="Confirm/Cancel callback host. For Mattermost in Docker use http://172.17.0.1:1919 (not localhost).">
+                            <field name="mm_ai_odoo_base_url" placeholder="http://172.17.0.1:1919"/>
+                        </setting>
+                        <setting string="Test configuration">
+                            <div>
+                                <button name="action_mm_ai_test_configuration"
+                                        type="object"
+                                        string="Test Configuration"
+                                        class="btn-primary"
+                                        icon="fa-plug"/>
+                            </div>
+                        </setting>
+                    </block>
+                    <block title="Mattermost">
+                        <setting string="Slash Command Token"
+                                 help="Copy Token from Mattermost → Integrations → Slash Commands → /odoo">
+                            <field name="mm_ai_slash_command_token" password="True"/>
+                        </setting>
+                        <setting string="Mattermost URL"
+                                 help="Needed for document import. Example: http://localhost:8065">
+                            <field name="mm_ai_mattermost_url" placeholder="http://localhost:8065"/>
+                        </setting>
+                        <setting string="Bot Access Token"
+                                 help="Create Integrations → Bot Accounts, invite bot to channel, paste token here.">
+                            <field name="mm_ai_bot_token" password="True"/>
+                        </setting>
+                    </block>
+                    <block title="Claude / Anthropic">
+                        <setting string="Anthropic API Key">
+                            <field name="mm_ai_anthropic_api_key" password="True" placeholder="sk-ant-..."/>
+                        </setting>
+                        <setting string="Claude Model">
+                            <field name="mm_ai_claude_model"/>
+                        </setting>
+                    </block>
+                    <block title="Permissions from installed Apps">
+                        <setting string="App coverage"
+                                 help="Automatically detected from Apps that are installed. Install Purchase/CRM/Accounting to enable those models.">
+                            <field name="mm_ai_app_coverage" widget="text" readonly="1"/>
+                        </setting>
+                        <setting string="Allowed models (auto)">
+                            <field name="mm_ai_allowed_models_auto" widget="text" readonly="1"/>
+                        </setting>
+                        <setting string="Allowed actions (auto)">
+                            <field name="mm_ai_allowed_actions_auto" widget="text" readonly="1"/>
+                        </setting>
+                        <setting string="Extra models (optional)"
+                                 help="Optional comma-separated technical names, e.g. project.task">
+                            <field name="mm_ai_extra_models" placeholder="project.task,hr.employee"/>
+                        </setting>
+                        <setting string="Extra actions (optional)">
+                            <field name="mm_ai_extra_actions" placeholder="action_confirm"/>
+                        </setting>
+                    </block>
+                    <block title="Safety">
+                        <setting string="Require confirmation for writes">
+                            <field name="mm_ai_confirm_writes"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_pys_mattermost_ai_config" model="ir.actions.act_window">
+        <field name="name">Configuration</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="context">{'module': 'pys_mattermost_odoo_ai'}</field>
+    </record>
+</odoo>

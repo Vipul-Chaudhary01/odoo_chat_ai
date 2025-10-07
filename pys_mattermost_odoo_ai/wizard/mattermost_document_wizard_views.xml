@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mattermost_ai_document_wizard_form" model="ir.ui.view">
+        <field name="name">mattermost.ai.document.wizard.form</field>
+        <field name="model">mattermost.ai.document.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Import Document">
+                <group>
+                    <field name="import_kind"/>
+                    <field name="data_file" filename="filename"/>
+                    <field name="filename" invisible="1"/>
+                    <field name="mimetype" invisible="1"/>
+                    <field name="request_id" readonly="1"/>
+                </group>
+                <group string="Preview" invisible="not result_preview">
+                    <field name="result_preview" nolabel="1"/>
+                </group>
+                <footer>
+                    <button name="action_extract_and_propose"
+                            type="object"
+                            string="Extract with AI"
+                            class="btn-primary"/>
+                    <button name="action_confirm_import"
+                            type="object"
+                            string="Confirm Import"
+                            class="btn-secondary"
+                            invisible="not request_id"/>
+                    <button string="Close" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mattermost_ai_document_wizard" model="ir.actions.act_window">
+        <field name="name">Import Document</field>
+        <field name="res_model">mattermost.ai.document.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

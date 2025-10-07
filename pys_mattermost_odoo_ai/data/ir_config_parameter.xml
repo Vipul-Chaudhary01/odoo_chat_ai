@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="ir_config_mm_ai_enabled" model="ir.config_parameter">
+        <field name="key">pys_mm_odoo_ai.enabled</field>
+        <field name="value">True</field>
+    </record>
+    <record id="ir_config_mm_ai_confirm_writes" model="ir.config_parameter">
+        <field name="key">pys_mm_odoo_ai.confirm_writes</field>
+        <field name="value">True</field>
+    </record>
+    <record id="ir_config_mm_ai_expiry" model="ir.config_parameter">
+        <field name="key">pys_mm_odoo_ai.request_expiry_minutes</field>
+        <field name="value">15</field>
+    </record>
+    <record id="ir_config_mm_ai_extra_models" model="ir.config_parameter">
+        <field name="key">pys_mm_odoo_ai.extra_models</field>
+        <field name="value"></field>
+    </record>
+    <record id="ir_config_mm_ai_extra_actions" model="ir.config_parameter">
+        <field name="key">pys_mm_odoo_ai.extra_actions</field>
+        <field name="value"></field>
+    </record>
+    <record id="ir_config_mm_ai_model" model="ir.config_parameter">
+        <field name="key">pys_mm_odoo_ai.claude_model</field>
+        <field name="value">claude-sonnet-5</field>
+    </record>
+    <!-- Weak placeholder; post_init_hook / migrate replace with a random secret. -->
+    <record id="ir_config_mm_ai_action_secret" model="ir.config_parameter">
+        <field name="key">pys_mm_odoo_ai.action_secret</field>
+        <field name="value">change-this-action-secret</field>
+    </record>
+    <record id="ir_config_mm_ai_timeout" model="ir.config_parameter">
+        <field name="key">pys_mm_odoo_ai.timeout</field>
+        <field name="value">60</field>
+    </record>
+</odoo>
